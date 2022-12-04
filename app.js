@@ -180,7 +180,7 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
         }
     })
 
-    // deleta cliente
+    // rota que deleta cliente
     app.get('/cliente/deletar/:cpf',function(req,res){ 
         var logado = verificaLogado();
         if(logado === 1){
