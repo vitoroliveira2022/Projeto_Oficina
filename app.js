@@ -282,7 +282,7 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
         }
     })
 
-    // deleta funcionario
+    // rota que deleta funcionario
     app.get('/funcionario/deletar/:cpf',function(req,res){ 
         var logado = verificaLogado();
         if(logado === 1){
