@@ -159,7 +159,7 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
     });
 
 
-    // edita cliente
+    // rota que edita cliente
     app.post('/cliente/editando',function(req,res){ 
         var logado = verificaLogado();
         if(logado === 1){
