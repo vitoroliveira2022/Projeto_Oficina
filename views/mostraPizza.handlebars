@@ -1,0 +1,10 @@
+<h1> Pizzas cadastradas: </h1>
+<a href="/home"><button>Voltar</button></a>
+<!-- a variavel mostrandoPizzas recebe as pizzas do banco de dados (array de pizzas)-->
+{{#each mostrandoPizzas}} 
+    <p>ID: {{dataValues.id}}</p>
+    <p>Nome: {{dataValues.nome}}</p>
+    <p>Ingredientes: {{dataValues.ingredientes}}</p>
+    <p>Preço: R$ {{dataValues.preco}},00</p>
+    <hr>
+{{/each}}

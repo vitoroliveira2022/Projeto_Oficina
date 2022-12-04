@@ -1,0 +1,14 @@
+  <h1>Editar Pizza: </h1>
+  <form action="/pizza/editando" method="POST">
+    <input type="hidden" value="{{mostrandoPizza.dataValues.id}}" name="id"> <!-- campo oculto -->
+    <label>Nome: </label>
+    <input type="text" name="nome" placeholder="Nome da pizza" value="{{mostrandoPizza.dataValues.nome}}">
+    <br>
+    <label>Ingredientes: </label>
+    <input type="text" name="ingredientes" placeholder="Ingredientes da pizza" value="{{mostrandoPizza.dataValues.ingredientes}}">
+    <br>
+    <label>Novo preço: </label>
+    <input type="text" name="preco" placeholder="Preço da pizza" value="{{mostrandoPizza.dataValues.preco}}">
+    <br>
+    <button type="submit">Editar pizza</button>
+    </form>

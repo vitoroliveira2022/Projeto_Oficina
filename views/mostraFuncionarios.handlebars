@@ -1,0 +1,20 @@
+<h1>Funcionários cadastrados: </h1>
+
+<a href="/homeFunc"><button>Voltar</button></a>
+
+{{#each mostrandoFuncionarios}} 
+    <p>CPF: {{dataValues.cpf}}</p>
+    <p>Nome: {{dataValues.nome}}</p>
+    <p>Logradouro: {{dataValues.logradouro}}</p>
+    <p>Bairro: {{dataValues.bairro}}</p>
+    <p>Cidade: {{dataValues.cidade}}</p>
+    <p>Telefone: {{dataValues.telefone}}</p>
+    <p>Cargo: {{dataValues.cargo}}</p>
+    <p>Salario: R$ {{dataValues.salario}},00</p>
+    <a href="/funcionario/editar/{{dataValues.cpf}}"><button>Editar</button></a>
+    <a href="/funcionario/deletar/{{dataValues.cpf}}"><button>Deletar</button></a>
+    <hr>
+
+{{/each}}
+
+

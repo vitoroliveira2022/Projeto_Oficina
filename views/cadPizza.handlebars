@@ -1,0 +1,19 @@
+<!-- method é a forma como os dados do formulário serão enviados para o back-end -->
+<!-- método GET: os dados são passados via URL -->
+<!-- método POST: passa dados de uma forma mais segura, não pela URL -->
+
+<!-- o action define qual rota que os dados recolhidos do formulário devem ser enviados !-->
+<!-- no exemplo abaixo os dados serão enviados via POST para a rota /pizza/cadastradas e a tal rota será executada -->
+<a href="/homeFunc"><button>Voltar</button></a>
+<form action="/pizza/cadastrando" method="POST">
+    <p>Nome da Pizza: </p>
+    <input type="text" name="nomePizza" required>
+    <p>Ingredientes da Pizza: </p>
+    <textarea name = "ingredientesPizza" cols="60" rows="5" required></textarea>
+    <label>Preço da Pizza: </label>
+    <label>R$
+        <input type="text" name="precoPizza" required>
+    </label>
+    <button type="submit">Cadastrar pizza</button>
+</form>
+

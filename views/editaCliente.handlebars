@@ -1,0 +1,17 @@
+  <h1>Editar dados: </h1>
+  <form action="/cliente/editando" method="POST">
+    <input type="hidden" value="{{mostrandoCliente.dataValues.cpf}}" name="cpf"> <!-- campo oculto -->
+    <p>Nome: </p>
+    <input type="text" name="nome" value="{{mostrandoCliente.dataValues.nome}}" required>
+    <p>Senha: </p>
+    <input type="password" name="senha" required>
+    <p>Logradouro: </p>
+    <input type="text" name = "logradouro" value="{{mostrandoCliente.dataValues.logradouro}}" required>
+    <p>Bairro: </p>
+    <input type="text" name="bairro" value="{{mostrandoCliente.dataValues.bairro}}" required>
+    <p>Cidade: </p>
+    <input type="text" name="cidade" value="{{mostrandoCliente.dataValues.cidade}}" required>
+    <p>Telefone: </p>
+    <input type="text" name="telefone" value="{{mostrandoCliente.dataValues.telefone}}" required>
+    <button type="submit">Editar cliente</button>
+    </form>

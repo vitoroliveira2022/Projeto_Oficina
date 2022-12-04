@@ -1,0 +1,52 @@
+create database Pizzaria;
+
+use Pizzaria;
+
+create table Pizzas(
+	id int,
+	nome varchar(50),
+	ingredientes varchar(500),
+	preco float,
+    primary key (id)
+);
+
+create table Clientes(
+	cpf varchar(11),
+    nome varchar(100),
+	logradouro varchar(100),
+	bairro varchar(100),
+	cidade varchar(100),
+    telefone varchar(20),
+    primary key (cpf)
+);
+
+create table Pedidos (
+	id int primary key,
+    cpfCliente varchar(11),
+    idPizza int,
+	quantidade int,
+    status varchar(15),
+	foreign key (idPizza) references Pizzas(id),
+    foreign key (cpfCliente) references Clientes(cpf)
+);
+
+select * from pedido;
+
+-- Para saber o valor total do pedido
+select sum(preco*quantidade) from pizza,pedido
+where pedido.idPizza = pizza.id;
+
+create database pizzaria;
+use pizzaria;
+<<<<<<< HEAD
+
+insert into funcionarios values ('99999999999','Vitor Oliveira','vitor123','Avenida Sao Paulo, 44','Centro','Maracai','18988237490','Gerente',2500,'Admin','2022-11-01 21:20:00','2022-11-01 21:20:00');
+=======
+describe funcionarios;
+
+insert into funcionarios values (46826376814,'Vitor Oliveira','vitor123','Avenida Sao Paulo, 44','Centro','Maracai','18988237490',2500,'Admin','2022-11-01 21:20:00','2022-11-01 21:20:00');
+select * from clientes;
+select * from funcionarios;
+>>>>>>> 72f4548e5de47bafe2f37141b7f1a046d80037bc
+
+

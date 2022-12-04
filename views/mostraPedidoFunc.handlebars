@@ -1,0 +1,20 @@
+<h1> Pedidos feitos: </h1>
+<a href="/homeFunc"><button>Voltar</button></a>
+<!-- a variavel mostrandoPedidos recebe os pedidos do banco de dados (array de pedidos)-->
+<!-- a variavel mostrandoClientes recebe os clientes do banco de dados (array de clientes)-->
+<!-- ...dataValues.nomeCampodoBanco -->
+
+{{#each mostrandoPedidos}}
+    <p>ID do pedido: {{dataValues.id}}</p>
+    <p>CPF do cliente: {{dataValues.cpfCliente}}</p>
+    <p>ID da Pizza: {{dataValues.idPizza}}</p>
+    <p>Quantidade: {{dataValues.quantidade}}</p>
+    <p>Status: {{dataValues.status}}</p>
+    <a href="/pedido/receber/{{dataValues.id}}"><button>Receber pedido</button></a>
+    <a href="/pedido/entrega/{{dataValues.id}}"><button>Entregar pedido</button></a>
+    <a href="/pedido/deletar/{{dataValues.id}}"><button>Deletar pedido</button></a>
+    <hr>
+{{/each}}
+
+
+

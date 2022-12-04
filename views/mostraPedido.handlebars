@@ -1,0 +1,11 @@
+<h1> Pedidos feitos: </h1>
+<a href="/home"><button>Voltar</button></a>
+<!-- a variavel mostrandoPedidos recebe os pedidos do banco de dados (array de pedidos)-->
+{{#each mostrandoPedidos}} 
+    <p>ID do pedido: {{dataValues.id}}</p>
+    <p>CPF do cliente: {{dataValues.cpfCliente}}</p>
+    <p>ID da Pizza: {{dataValues.idPizza}}</p>
+    <p>Quantidade: {{dataValues.quantidade}}</p>
+    <p>Status: {{dataValues.status}}</p>
+    <hr>
+{{/each}}

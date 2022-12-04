@@ -1,0 +1,13 @@
+<h1>Clientes cadastrados: </h1>
+<a href="/homeFunc"><button>Voltar</button></a>
+<!-- a variavel mostrandoClientes recebe os clientes do banco de dados (array de clientes)-->
+{{#each mostrandoClientes}} 
+    <p>CPF: {{dataValues.cpf}}</p>
+    <p>Nome: {{dataValues.nome}}</p>
+    <p>Logradouro: {{dataValues.logradouro}}</p>
+    <p>Bairro: {{dataValues.bairro}}</p>
+    <p>Cidade: {{dataValues.cidade}}</p>
+    <p>Telefone: {{dataValues.telefone}}</p>
+    <a href="/cliente/deletar/{{dataValues.cpf}}"><button>Deletar</button></a>
+    <hr>
+{{/each}}

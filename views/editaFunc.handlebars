@@ -1,0 +1,21 @@
+  <h1>Editar Funcionário: </h1>
+  <form action="/funcionario/editando" method="POST">
+    <input type="hidden" value="{{mostrandoFuncionario.dataValues.cpf}}" name="cpf"> <!-- campo oculto -->
+    <label>Nome do funcionário: </label>
+    <input type="text" name="nome" value="{{mostrandoFuncionario.dataValues.nome}}" required>
+    <label>Senha: </label>
+    <input type="password" name="senha" required>
+    <label>Logradouro do funcionário: </label>
+    <input type="text" name = "logradouro" value="{{mostrandoFuncionario.dataValues.logradouro}}" required>
+    <label>Bairro do funcionário: </label>
+    <input type="text" name="bairro" value="{{mostrandoFuncionario.dataValues.bairro}}" required>
+    <label>Cidade do funcionário: </label>
+    <input type="text" name="cidade" value="{{mostrandoFuncionario.dataValues.cidade}}" required>
+    <label>Telefone do funcionário: </label>
+    <input type="text" name="telefone" value="{{mostrandoFuncionario.dataValues.telefone}}" required>
+    <label>Cargo do funcionário: </label>
+    <input type="text" name="cargo" value="{{mostrandoFuncionario.dataValues.cargo}}" required>
+    <label>Salário do funcionário: </label>
+    <input type="text" name="salario" value="{{mostrandoFuncionario.dataValues.salario}}" required>
+    <button type="submit">Editar funcionário</button>
+    </form>
