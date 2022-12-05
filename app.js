@@ -109,7 +109,7 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
     app.get('/cliente/dados',function(req,res){
         var logado = verificaLogado();
         if(logado === 1){
-            Cliente.findOne({_cpf: cpfUsuario}).then(function(cliente){
+            Cliente.findOne({where: {'cpf':cpfUsuario}}).then(function(cliente){
                 res.render('mostraDados',{mostrandoCliente: cliente}) // estou passando para a variavel mostrandoClientes o objeto 
                 //cliente, que tem todos os dados 
             })
@@ -389,7 +389,6 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
         
     })
 
-
     // mostra todos os pedidos 
     app.get('/pedido/cadastrados', function(req,res){
         var logado = verificaLogado();
@@ -401,7 +400,11 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
             }
             else if(ehCliente === 0){ 
                 Pedido.findAll().then(function(pedidos){
-                    res.render('mostraPedidoFunc',{mostrandoPedidos: pedidos})
+                    Cliente.findAll().then(function(clientes){
+                        Pizza.findAll().then(function(pizzas){
+                            res.render('mostraPedidoFunc',{mostrandoPedidos: pedidos, mostrandoClientes: clientes, mostrandoPizzas: pizzas})
+                        })
+                    })
                 })
             }
           
@@ -414,17 +417,21 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
     // cadastra os pedidos
     app.post('/pedido/cadastrando',function(req,res){
         // req.body.nomeCampo eu pego o dado enviado do formulario com o name indicado
-        Pedido.create({
-            cpfCliente: cpfUsuario,
-            idPizza: req.body.idPizza,
-            quantidade: req.body.quantidade,
-            status: "Pendente"
-        }).then(function(){
-            res.redirect('/pedido/cadastrados'); // se deu certo vai redirecionar para essa rota
-        }).catch(function(erro){
-            res.send('Houve um erro ao cadastrar o pedido: '+erro);
+        Pizza.findOne({where: {'id':req.body.idPizza}}).then(function(pizza){ // pesquiso para ver se tem a pizza com o id digitado pelo cliente
+            if(pizza){ // se existe a pizza com o ID que o cliente digitou
+                console.log('Tem essa pizza')
+                Pedido.create({
+                    cpfCliente: cpfUsuario,
+                    idPizza: req.body.idPizza,
+                    quantidade: req.body.quantidade,
+                    status: "Pendente"
+                }).then(function(){
+                    res.redirect('/pedido/cadastrados'); // se deu certo vai redirecionar para essa rota
+                })
+            }else{
+                res.render('naoExistePizza')
+            }
         })
-        
     })
 
     // recebe o pedido
