@@ -1,12 +1,12 @@
 <h1> Pizzas cadastradas: </h1>
 <a href="/homeFunc"><button>Voltar</button></a>
 <!-- a variavel mostrandoPizzas recebe as pizzas do banco de dados (array de pizzas)-->
-{{#each mostrandoPizzas}} 
-    <p>ID: {{dataValues.id}}</p>
-    <p>Nome: {{dataValues.nome}}</p>
-    <p>Ingredientes: {{dataValues.ingredientes}}</p>
-    <p>Preço: R$ {{dataValues.preco}},00</p>
-    <a href="/pizza/editar/{{dataValues.id}}"><button>Editar</button></a>
-    <a href="/pizza/deletar/{{dataValues.id}}"><button>Deletar</button></a>
-    <hr>
+{{#each mostrandoPizzas}}
+  <p>ID: {{dataValues.id}}</p>
+  <p>Nome: {{dataValues.nome}}</p>
+  <p>Ingredientes: {{dataValues.ingredientes}}</p>
+  <p>Preço: R$ {{dataValues.preco}},00</p>
+  <a href="/pizza/editar/{{dataValues.id}}"><button>Editar</button></a>
+  <a href="/pizza/deletar/{{dataValues.id}}"><button>Deletar</button></a>
+  <div class="line"></div>
 {{/each}}

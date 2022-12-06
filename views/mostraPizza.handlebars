@@ -2,18 +2,20 @@
 <a href="/home"><button>Voltar</button></a>
 <!-- a variavel mostrandoPizzas recebe as pizzas do banco de dados (array de pizzas)-->
 
-{{#each mostrandoPizzas}} 
-    <form action="/pedido/cadastrando/{{dataValues.id}}" method="POST">
-        <br>
-        <label>ID da Pizza: {{dataValues.id}}</label><br>
-        <label>Nome: {{dataValues.nome}}</label><br>
-        <label>Ingredientes: {{dataValues.ingredientes}}</label><br>
-        <label>Preço: R$ {{dataValues.preco}},00</label><br>
-        <label>Quantidade: </label>
-        <input type="text" placeholder="Digite a quantide de pizzas" name="quantidade">
-        <button class="submit">Pedir</button>
-        <hr>
-    </form>
- {{/each}}
-    
-    
+{{#each mostrandoPizzas}}
+  <form action="/pedido/cadastrando/{{dataValues.id}}" method="POST">
+    <br />
+    <label>ID da Pizza: {{dataValues.id}}</label><br />
+    <label>Nome: {{dataValues.nome}}</label><br />
+    <label>Ingredientes: {{dataValues.ingredientes}}</label><br />
+    <label>Preço: R$ {{dataValues.preco}},00</label><br />
+    <label>Quantidade: </label>
+    <input
+      type="text"
+      placeholder="Digite a quantide de pizzas"
+      name="quantidade"
+    />
+    <button class="submit">Pedir</button>
+    <div class="line"></div>
+  </form>
+{{/each}}

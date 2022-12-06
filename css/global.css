@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 :root {
     --text-base: #afb6c2;
     --text-title: #d4ccb6;
@@ -6,18 +8,33 @@
     --primary-color: #ffc632;
 }
 
+::-webkit-scrollbar {
+    width: 0.5rem;
+    background-color: var(--text-title);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
     background-color: var(--background);
+    min-height: 100vh;
+}
+
+main {
+    height: 100%;
 }
 
 a {
-    color: black;
+    color: var(--primary-color);
     text-decoration: none;
 }
 
@@ -29,7 +46,7 @@ label {
 
 input,
 textarea {
-    border: 2.5px solid var(--text-base);
+    border: 2.5px solid var(--text-title);
     border-radius: 4px;
     background: transparent;
     color: var(--text-base);
@@ -37,7 +54,7 @@ textarea {
     padding: 8px;
     margin-bottom: 15px;
 
-    transition: 0.4s;
+    transition: 0.4s ease-in-out;
 }
 
 input:focus,
@@ -55,28 +72,31 @@ form {
 
 button {
     font-size: 20px;
-    border: none;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    background: transparent;
     border-radius: 4px;
 
     padding: 20px;
     margin: 1rem 0.1rem 0.8rem 0;
 
-    background-color: var(--primary-color);
     cursor: pointer;
-
+    transition: all 0.3s ease-in-out;
 }
 
 button:hover {
-    opacity: 0.8;
+    box-shadow: 0 0 10px var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
 }
 
-hr {
+.line {
+    border: 1px solid var(--text-title);
     margin-bottom: 0.4rem;
 }
 
 /*______________________________CONTAINER______________________________*/
 .container {
-    height: 100%;
+    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -84,11 +104,12 @@ hr {
 
 .form__container {
     height: auto;
-    border: 1px solid var(--text-title);
+    border: 2px solid var(--text-title);
     border-radius: 4px;
     padding: 25px 110px;
     background-color: var(--form-background);
 }
+
 
 .form__container h1 {
     color: var(--text-title);
