@@ -118,6 +118,7 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
         }
     })
 
+
     // mostra os clientes cadastrados
     app.get('/cliente/cadastrados', function(req,res){
         var logado = verificaLogado();
@@ -394,20 +395,15 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
         var logado = verificaLogado();
         if(logado === 1){
             if(ehCliente === 1){
-                Pedido.findAll({where: {'cpfCliente':cpfUsuario}}).then(function(pedidos){
+                Pedido.findAll({where: {'cpfCliente':cpfUsuario}}).then(function(pedidos){ // busca apenas os pedidos do cliente
                     res.render('mostraPedido',{mostrandoPedidos: pedidos})
                 })
             }
             else if(ehCliente === 0){ 
                 Pedido.findAll().then(function(pedidos){
-                    Cliente.findAll().then(function(clientes){
-                        Pizza.findAll().then(function(pizzas){
-                            res.render('mostraPedidoFunc',{mostrandoPedidos: pedidos, mostrandoClientes: clientes, mostrandoPizzas: pizzas})
-                        })
-                    })
+                    res.render('mostraPedidoFunc',{mostrandoPedidos: pedidos})
                 })
             }
-          
         }else{
             res.send('Erro, faça login primeiro !')
         }
@@ -415,24 +411,19 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
     })
 
     // cadastra os pedidos
-    app.post('/pedido/cadastrando',function(req,res){
+    app.post('/pedido/cadastrando/:idPizza',function(req,res){
         // req.body.nomeCampo eu pego o dado enviado do formulario com o name indicado
-        Pizza.findOne({where: {'id':req.body.idPizza}}).then(function(pizza){ // pesquiso para ver se tem a pizza com o id digitado pelo cliente
-            if(pizza){ // se existe a pizza com o ID que o cliente digitou
-                console.log('Tem essa pizza')
-                Pedido.create({
-                    cpfCliente: cpfUsuario,
-                    idPizza: req.body.idPizza,
-                    quantidade: req.body.quantidade,
-                    status: "Pendente"
-                }).then(function(){
-                    res.redirect('/pedido/cadastrados'); // se deu certo vai redirecionar para essa rota
-                })
-            }else{
-                res.render('naoExistePizza')
-            }
+        Pedido.create({
+            cpfCliente: cpfUsuario,
+            idPizza: req.params.idPizza,
+            quantidade: req.body.quantidade,
+            status: "Pendente"
+        }).then(function(){
+            res.redirect('/pedido/cadastrados'); // se deu certo vai redirecionar para essa rota
         })
     })
+        
+        
 
     // recebe o pedido
     app.get('/pedido/receber/:id',function(req,res){ 
@@ -465,7 +456,24 @@ var ehCliente; // vai receber 1 se for cliente e 0 se for funcionario
             res.send('Erro, faça login primeiro !')
         } 
     })
-
+    // leva para o funcionario ou cliente ver os dados do pedido
+    app.get('/pedido/dados/:cpfCliente/:idPizza/:id',function(req,res){
+        var logado = verificaLogado();
+        if(logado === 1){
+            Pedido.findOne({where: {'id':req.params.id}}).then(function(pedido){
+                Cliente.findOne({where: {'cpf':req.params.cpfCliente}}).then(function(cliente){
+                    Pizza.findOne({where: {'id':req.params.idPizza}}).then(function(pizza){
+                        var valorTotal = pizza.preco * pedido.quantidade;
+                        res.render('mostraDadosPedido',{mostraCliente: cliente, mostraPedido: pedido, mostraPizza: pizza,valorTotal}) 
+                        //cliente, que tem todos os dados
+                    })  
+                })
+            })
+        }else{
+            res.send('Erro, logue primeiro !');
+        }
+    })
+    
     // deleta pedido
     app.get('/pedido/deletar/:id',function(req,res){ 
         var logado = verificaLogado()

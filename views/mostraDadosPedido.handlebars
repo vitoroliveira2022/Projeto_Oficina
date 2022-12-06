@@ -1,0 +1,18 @@
+<h1> Dados do pedido: </h1>
+<a href="/pedido/cadastrados"><button>Voltar</button></a>
+<!-- a variavel mostrandoPedidos recebe os pedidos do banco de dados (array de pedidos)-->
+<!-- a variavel mostrandoClientes recebe os clientes do banco de dados (array de clientes)-->
+<!-- ...dataValues.nomeCampodoBanco -->
+
+    <p>ID do pedido: {{mostraPedido.dataValues.id}}</p>
+    <p>CPF do cliente: {{mostraCliente.dataValues.cpf}}</p>
+    <p>Nome do cliente: {{mostraCliente.dataValues.nome}}</p>
+    <p>Logradouro do cliente: {{mostraCliente.dataValues.logradouro}}</p>
+    <p>Cidade do cliente: {{mostraCliente.dataValues.cidade}}</p>
+    <p>Telefone do cliente: {{mostraCliente.dataValues.telefone}}</p>
+    <p>Pizza: {{mostraPizza.dataValues.nome}}</p>
+    <p>Preço unitário: R$ {{mostraPizza.dataValues.preco}},00</p>
+    <p>Quantidade: {{mostraPedido.dataValues.quantidade}}</p>
+    <p>Valor total do pedido: R$ {{valorTotal}},00</p>
+    <p>Status: {{mostraPedido.dataValues.status}}</p>
+    <hr>
